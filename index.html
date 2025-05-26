@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tali</title>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-white text-black dark:bg-gray-900 dark:text-white transition-colors duration-300">
+
+  <!-- Header -->
+  <div class="flex justify-between items-center p-4 border-b border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900">
+    <h1 class="text-2xl font-semibold">🤖 Tali</h1>
+    <button id="toggleTheme" class="p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-800">
+      <i id="themeIcon" class="w-6 h-6" data-lucide="moon"></i>
+    </button>
+  </div>
+
+  <!-- Chat Container -->
+  <div id="chatBox" class="flex flex-col space-y-2 p-4 h-[calc(100vh-140px)] overflow-y-auto"></div>
+
+  <!-- Input Bar -->
+  <div class="fixed bottom-0 w-full p-4 bg-white dark:bg-gray-900 border-t border-gray-300 dark:border-gray-700">
+    <div class="flex items-center max-w-4xl mx-auto gap-2">
+      <textarea id="userInput" rows="1" placeholder="Type a message..."
+        class="flex-grow resize-none p-3 rounded-xl bg-gray-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+      <button onclick="sendMessage()"
+        class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl">
+        ➤
+      </button>
+    </div>
+  </div>
+
+  <script src="chatbot.js"></script>
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    const toggleThemeBtn = document.getElementById("toggleTheme");
+    const themeIcon = document.getElementById("themeIcon");
+
+    function setThemeIcon() {
+      if (document.documentElement.classList.contains("dark")) {
+        themeIcon.setAttribute("data-lucide", "sun");
+      } else {
+        themeIcon.setAttribute("data-lucide", "moon");
+      }
+      lucide.createIcons();
+    }
+
+    toggleThemeBtn.addEventListener("click", () => {
+      document.documentElement.classList.toggle("dark");
+      setThemeIcon();
+    });
+
+    // On load
+    setThemeIcon();
+  </script>
+</body>
+</html>
