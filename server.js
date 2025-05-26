@@ -1,14 +1,13 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+const fetch = require('node-fetch'); // Make sure node-fetch v2 is installed
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY; // use env var
+const OPENROUTER_API_KEY = "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"; // ideally from env
 const OPENROUTER_API_URL = 'https://openrouter.ai/api/v1/chat/completions';
 
 app.post("/chat", async (req, res) => {
