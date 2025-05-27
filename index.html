@@ -1,67 +1,66 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tali</title>
-
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-    };
-  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tali Chatbot</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- AOS CSS for animations -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 </head>
-<body class="bg-white text-black dark:bg-gray-900 dark:text-white transition-colors duration-300">
+<body class="bg-gray-900 text-white font-sans">
 
   <!-- Header -->
-  <div class="flex justify-between items-center p-4 border-b border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900">
-    <h1 class="text-2xl font-semibold">🤖 Tali</h1>
-    <button id="toggleTheme" class="p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-800">
-      <i id="themeIcon" class="w-6 h-6" data-lucide="moon"></i>
-    </button>
-  </div>
+  <header class="flex justify-between items-center px-6 py-4 bg-gray-950 shadow-lg">
+    <h1 class="text-2xl font-bold tracking-tight text-orange-400">Tali</h1>
+    <nav class="space-x-6">
+      <a href="#about" class="hover:text-orange-400 transition">About</a>
+      <a href="#video" class="hover:text-orange-400 transition">Watch</a>
+      <a href="index.html" class="hover:text-orange-400 transition">Get Started</a>
+    </nav>
+  </header>
 
-  <!-- Chat Container -->
-  <div id="chatBox" class="flex flex-col space-y-2 p-4 h-[calc(100vh-140px)] overflow-y-auto"></div>
+  <!-- Hero / Intro Section -->
+  <section class="text-center px-6 py-20 bg-gradient-to-b from-gray-900 to-gray-800" data-aos="fade-up" data-aos-delay="0">
+    <h2 class="text-4xl md:text-5xl font-bold mb-4">Meet <span class="text-orange-400">Tali</span> – Your AI Chat Companion</h2>
+    <p class="max-w-2xl mx-auto text-lg md:text-xl text-gray-300 mb-8">
+      Tali is an intelligent chatbot designed to assist, answer, and chat with you anytime. Built with powerful AI, it's ready to help you be more productive and stay connected.
+    </p>
+    <a href="index.html" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full shadow-lg transition duration-300">
+      Get Started
+    </a>
+  </section>
 
-  <!-- Input Bar -->
-  <div class="fixed bottom-0 w-full p-4 bg-white dark:bg-gray-900 border-t border-gray-300 dark:border-gray-700">
-    <div class="flex items-center max-w-4xl mx-auto gap-2">
-      <textarea id="userInput" rows="1" placeholder="Type a message..."
-        class="flex-grow resize-none p-3 rounded-xl bg-gray-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-      <button onclick="sendMessage()"
-        class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl">
-        ➤
-      </button>
+  <!-- Video Section -->
+  <section id="video" class="px-6 py-16 bg-gray-800 text-center" data-aos="fade-up" data-aos-delay="100">
+    <h3 class="text-3xl font-bold mb-6">Watch Tali in Action</h3>
+    <div class="max-w-3xl mx-auto aspect-video rounded-lg overflow-hidden shadow-lg">
+      <iframe class="w-full h-full" src="Tali.mp4" title="Tali Intro Video" frameborder="0" allowfullscreen></iframe>
     </div>
-  </div>
+  </section>
 
-  <script src="chatbot.js"></script>
+  <!-- CTA -->
+  <section id="get-started" class="px-6 py-20 bg-gray-900 text-center" data-aos="fade-up" data-aos-delay="200">
+    <h4 class="text-3xl font-bold mb-4">Ready to chat with Tali?</h4>
+    <p class="text-lg text-gray-400 mb-8">Sign up and start talking to your new digital assistant today.</p>
+    <a href="/signup" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-4 rounded-full shadow-lg transition">
+      Get Started
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center text-sm text-gray-500 py-6 bg-gray-950" data-aos="fade-up" data-aos-delay="300">
+    &copy; 2025 Tali Chatbot. All rights reserved.
+  </footer>
+
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
-    // Initialize Lucide icons
-    lucide.createIcons();
-
-    const toggleThemeBtn = document.getElementById("toggleTheme");
-    const themeIcon = document.getElementById("themeIcon");
-
-    function setThemeIcon() {
-      if (document.documentElement.classList.contains("dark")) {
-        themeIcon.setAttribute("data-lucide", "sun");
-      } else {
-        themeIcon.setAttribute("data-lucide", "moon");
-      }
-      lucide.createIcons();
-    }
-
-    toggleThemeBtn.addEventListener("click", () => {
-      document.documentElement.classList.toggle("dark");
-      setThemeIcon();
+    AOS.init({
+      duration: 800, // animation duration
+      once: true,    // animation should happen only once
     });
-
-    // On load
-    setThemeIcon();
   </script>
 </body>
 </html>
